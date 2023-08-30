@@ -12,12 +12,14 @@ const Link = (props: JSX.IntrinsicElements['a']) => (
 export default function App() {
   useEffect(() => {
     const runner = async () => {
-      const r = await fetch('/data/index.json');
+      const r = await fetch('/snippet-browser/data/index.json');
       const data = await r.json();
 
       console.log('>>>>>>', data);
 
-      const snippet = await (await fetch(`data/${data[0].slug}`)).text();
+      const snippet = await (
+        await fetch(`/snippet-browser/data/${data[0].slug}`)
+      ).text();
 
       console.log('>>>>>>>', snippet);
     };
